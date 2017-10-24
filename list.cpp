@@ -5,6 +5,19 @@ bool List::empty() const {
 	return head == 0;
 }
 
+void List::push_front(int x) {
+	Link * temp = new Link(0, x);
+
+	if(head == 0) {
+		head = temp;
+		tail = temp;
+	}
+	else {
+		head->next = temp;
+		head = temp;
+	}
+}
+
 void List::push_back(int x) {
 	Link * temp = new Link(0, x);
 	

@@ -21,6 +21,16 @@ void push_backTest() {
 	*it = 4;
 	assert(*it == 4);
 }
+void push_frontTest() {
+	List x;
+	x.push_back(3);
+	assert(x.empty() == false);
+	assert(x.size() == 1);
+	x.push_front(5);
+	Iterator it = x.end();
+	it = x.begin();
+	assert(*it ==5);
+}
 
 int main() {
 
