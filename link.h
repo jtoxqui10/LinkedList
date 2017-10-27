@@ -3,12 +3,15 @@
 class Link {
 public:
 	Link() {}
-	Link(Link * l, int x ) {
+	Link(Link * y, int x ) {
 		data = x;
-		next = l;
+		next = y;
 	}
-
+private:
 	int data;
 	Link * next;
+
+	friend class List;
+	friend class Iterator;
 
 };

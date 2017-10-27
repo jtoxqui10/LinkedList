@@ -5,8 +5,7 @@
 class List {
 public:
 	List() {
-		head = 0;
-		tail = 0; 
+		head = 0; 
 	} 
 	~List() {} //IMPLEMENT LATER
 	bool empty() const;
