@@ -6,7 +6,7 @@ class Iterator {
 public:
 	void operator++();
 	int & operator*() const;
-	bool operator==(const Iterator & rhs); //right hand side
+	bool operator==(const Iterator & rhs);
 	
 
 private:

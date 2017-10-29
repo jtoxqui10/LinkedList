@@ -10,7 +10,7 @@ int List::size() {
 	Link * temp = head;
 	while(temp != 0) {
 		++count;
-		temp = temp->next; //how you move to next link
+		temp = temp->next;
 	}
 	return count;
 }
@@ -20,7 +20,6 @@ void List::push_front(int x) {
 
 	if(head == 0) {
 		head = temp;
-		tail = temp;
 	}
 	else {
 		temp->next = head;
@@ -73,26 +72,33 @@ Iterator List::insert(Iterator it, int n) {
 		push_front(n);
 	}
 	else {
-	Link * prev = head;
-	while(prev->next != it.link) {
-		prev = prev->next;
+		Link * prev = head;
+		while(prev->next != it.link) {
+			prev = prev->next;
 	}
  	prev->next = new Link(0, n);
 	}
 }
 
 Iterator List::erase(Iterator it) {
-	assert(head != 0);
-	Link * prev = head;
-	while(prev->next != it.link) {
-		prev = prev->next;
+	if(head == 0) {
+		return Iterator(0);
 	}
-	Link * newnext = prev->next->next;
-	delete prev->next;
-	prev->next = newnext;
+	else if(it.link == head) {
+		Link * temp;
+		head = temp->next;
+		delete temp->next;
+	}
+	else {
+		Link * prev = head;
+		while(prev->next != it.link) {
+			prev = prev->next;
+		}
+		Link * newnext = prev->next->next;
+		delete prev->next;
+		prev->next = newnext;
+	}
 }
-
-
 Iterator List::begin() {
 	return Iterator(head);
 }

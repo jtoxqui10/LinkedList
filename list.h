@@ -7,7 +7,7 @@ public:
 	List() {
 		head = 0; 
 	} 
-	~List() {} //IMPLEMENT LATER
+	~List() {}
 	bool empty() const;
 	int size();
 	void push_front(int x);
@@ -21,5 +21,4 @@ public:
 
 private:
 	Link * head;
-	Link * tail;
 };
