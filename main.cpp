@@ -82,11 +82,17 @@ void test3() {
 	assert(*it == 20);
 	x.pop_back();
 	assert(x.size() == 0);
-}	
+}
+void test4() {
+        List x;
+        x.push_front(4);
+        x.erase(x.begin());
+}
 int main() {
 	test();
 	test2();
 	test3();
+	test4();
 	cout << "All tests passed.";
 }
 

@@ -4,10 +4,8 @@
 
 class List {
 public:
-	List() {
-		head = 0; 
-	} 
-	~List() {}
+	List():head(0), tail(0) {} 
+	~List();
 	bool empty() const;
 	int size();
 	void push_front(int x);
@@ -21,4 +19,6 @@ public:
 
 private:
 	Link * head;
+	Link * tail;
+	friend class Iterator;
 };

@@ -1,6 +1,15 @@
 #include "list.h"
 #include <cassert>
 
+List::~List () {
+	Link *node = head;
+	while (node != 0) {
+		Link *pt = node->next; 
+		delete node;
+		node = pt;
+	} 
+}
+
 bool List::empty() const {
 	return head == 0;
 }
@@ -81,24 +90,23 @@ Iterator List::insert(Iterator it, int n) {
 }
 
 Iterator List::erase(Iterator it) {
-	if(head == 0) {
-		return Iterator(0);
-	}
-	else if(it.link == head) {
-		Link * temp;
-		head = temp->next;
-		delete temp->next;
+	if (it.link == head) { 
+		Link *pt = head->next;
+		delete head;
+		head = pt; 
+		//return 0; 
 	}
 	else {
-		Link * prev = head;
-		while(prev->next != it.link) {
+		Link *prev = head;
+		while (prev->next != it.link) {
 			prev = prev->next;
 		}
-		Link * newnext = prev->next->next;
-		delete prev->next;
-		prev->next = newnext;
+		Link *o = prev->next;
+		prev->next = prev->next->next;
+		delete o;
 	}
 }
+
 Iterator List::begin() {
 	return Iterator(head);
 }
