@@ -88,11 +88,53 @@ void test4() {
         x.push_front(4);
         x.erase(x.begin());
 }
+void test5() { // List containing more than one element, erasing link with the iterator pointing to the middle
+	List a;
+	a.push_back(90);
+	a.push_back(12);
+	assert(a.size() == 2);
+
+	Iterator ii = a.begin();
+	++ii;
+	a.erase(ii);
+	assert(a.size() == 1);
+
+	ii = a.begin();
+	a.erase(ii);
+	assert(a.size() == 0);
+	assert(a.empty() == true);
+}
+
+void test6() { // List containing more than one element, erasing link with the iterator pointing to the end 
+	List a;
+	a.push_back(90);
+	a.push_back(12);
+	a.push_back(2);
+	assert(a.size() == 3);
+
+	Iterator ii = a.begin();
+	assert(*ii == 90); 
+	++ii;
+	assert(*ii == 12); 
+	++ii;
+	assert(*ii == 2);
+	a.erase(ii);
+	assert(a.size() == 2);
+
+	ii = a.begin();
+	assert(*ii == 90);
+	++ii;
+	assert(*ii == 12);
+	++ii;
+	assert(ii == a.end());
+}
 int main() {
 	test();
 	test2();
 	test3();
 	test4();
+	test5();
+	test6();
 	cout << "All tests passed.";
 }
 

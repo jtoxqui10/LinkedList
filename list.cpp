@@ -94,7 +94,7 @@ Iterator List::erase(Iterator it) {
 		Link *pt = head->next;
 		delete head;
 		head = pt; 
-		//return 0; 
+//		return; 
 	}
 	else {
 		Link *prev = head;
